@@ -8,7 +8,7 @@ import { getDefaultConfig, getDefaultWallets, RainbowKitProvider } from '@rainbo
 import { argentWallet, ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import { sepolia } from 'wagmi/chains';
+import { mainnet, sepolia } from 'wagmi/chains';
 
 const { wallets: defaultWallets } = getDefaultWallets();
 
@@ -22,7 +22,7 @@ const wagmiConfig = getDefaultConfig({
       wallets: [argentWallet, trustWallet, ledgerWallet]
     }
   ],
-  chains: [sepolia],
+  chains: [mainnet, sepolia],
   ssr: true
 });
 
