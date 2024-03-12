@@ -11,6 +11,7 @@ import Label from './label';
 export default function Network() {
   const chains = useChains();
   const activeChainId = useChainId();
+
   const activeChain = useMemo(
     () => chains.find((chain) => chain.id === activeChainId),
     [activeChainId, chains]
