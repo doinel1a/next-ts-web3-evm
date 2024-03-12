@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
+import CopyAddress from './actions/copy-address';
 import Balance from './details/balance';
 import ENSName from './details/ens-name';
 import Network from './details/network';
@@ -42,6 +43,12 @@ export default function WalletDropdown() {
           <ENSName address={address} />
           <Balance address={address} />
           <Network />
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <CopyAddress address={address} />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
