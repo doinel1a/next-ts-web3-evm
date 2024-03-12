@@ -14,6 +14,7 @@ import {
 
 import CopyAddress from './actions/copy-address';
 import QRCodeDialog from './actions/dialog/qrcode';
+import Disconnect from './actions/disconnect';
 import Balance from './details/balance';
 import ENSName from './details/ens-name';
 import Network from './details/network';
@@ -76,6 +77,7 @@ export default function WalletDropdown() {
             onDropdownSelect={handleDropdownItemSelect}
             onDialogOpenChange={(open) => setIsQRCodeDialogOpen(open)}
           />
+          <Disconnect />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
