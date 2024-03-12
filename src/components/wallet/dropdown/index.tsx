@@ -16,6 +16,7 @@ import CopyAddress from './actions/copy-address';
 import QRCodeDialog from './actions/dialog/qrcode';
 import SwitchNetworkDialog from './actions/dialog/switch-network';
 import Disconnect from './actions/disconnect';
+import Faucet from './actions/faucet';
 import Balance from './details/balance';
 import ENSName from './details/ens-name';
 import Network from './details/network';
@@ -72,6 +73,7 @@ export default function WalletDropdown() {
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
+          <Faucet />
           <CopyAddress address={address} />
           <QRCodeDialog
             isDialogOpen={isQRCodeDialogOpen}
