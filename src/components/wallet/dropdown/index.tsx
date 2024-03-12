@@ -6,8 +6,15 @@ import { useAccount } from 'wagmi';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+
+import Balance from './details/balance';
+import ENSName from './details/ens-name';
+import Network from './details/network';
 
 export default function WalletDropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -28,7 +35,15 @@ export default function WalletDropdown() {
           {displayAddress}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='w-56'>Wallet Dropdown</DropdownMenuContent>
+      <DropdownMenuContent className='w-56'>
+        <DropdownMenuLabel>Details</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <ENSName address={address} />
+          <Balance address={address} />
+          <Network />
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 }
