@@ -18,6 +18,10 @@ type TCopyAddress = {
 export default function CopyAddress({ address }: TCopyAddress) {
   const { isClipboardApiSupported, isCopied, copyToClipboard } = useCopyToClipboard();
 
+  if (!isClipboardApiSupported) {
+    return null;
+  }
+
   return (
     <DropdownMenuItem
       onClick={async () => {
