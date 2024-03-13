@@ -1,7 +1,14 @@
 import React from 'react';
 
+import dynamic from 'next/dynamic';
+
 import ThemeToggle from './theme-toggle';
-import Wallet from './wallet';
+import { Skeleton } from './ui/skeleton';
+
+const Wallet = dynamic(() => import('./wallet'), {
+  loading: () => <Skeleton className='h-10 w-32 rounded-medium' />,
+  ssr: false
+});
 
 export default function Navbar() {
   return (
@@ -10,7 +17,7 @@ export default function Navbar() {
 
       <div className='flex items-center gap-x-5 pr-20'>
         <ThemeToggle />
-        <Wallet />
+        <Wallet className='w-32' />
       </div>
     </header>
   );
