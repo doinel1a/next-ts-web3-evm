@@ -9,6 +9,7 @@ import config from '_config';
 
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Toaster } from '@/components/ui/toast/toaster';
 import RootProvider from '@/providers/root';
 
 export const metadata: Metadata = {
@@ -29,10 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <RootProvider>
           <Navbar />
-
           {children}
-
           <Footer />
+
+          <Toaster />
         </RootProvider>
       </body>
     </html>
