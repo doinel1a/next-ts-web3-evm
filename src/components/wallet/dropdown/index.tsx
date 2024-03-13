@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 
 import { Button } from '@nextui-org/button';
+import dynamic from 'next/dynamic';
 import { useAccount } from 'wagmi';
 
 import {
@@ -12,14 +13,40 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-import CopyAddress from './actions/copy-address';
-import QRCodeDialog from './actions/dialog/qrcode';
-import SwitchNetworkDialog from './actions/dialog/switch-network';
-import Disconnect from './actions/disconnect';
-import Faucet from './actions/faucet';
-import Balance from './details/balance';
-import ENSName from './details/ens-name';
-import Network from './details/network';
+import DynamicFallback from './dynamic-fallback';
+
+const CopyAddress = dynamic(() => import('./actions/copy-address'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const QRCodeDialog = dynamic(() => import('./actions/dialog/qrcode'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const SwitchNetworkDialog = dynamic(() => import('./actions/dialog/switch-network'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const Disconnect = dynamic(() => import('./actions/disconnect'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const Faucet = dynamic(() => import('./actions/faucet'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const Balance = dynamic(() => import('./details/balance'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const ENSName = dynamic(() => import('./details/ens-name'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
+const Network = dynamic(() => import('./details/network'), {
+  loading: () => <DynamicFallback />,
+  ssr: false
+});
 
 export default function WalletDropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
