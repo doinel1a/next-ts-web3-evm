@@ -3,8 +3,11 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 import { Skeleton } from './ui/skeleton';
-import ThemeToggle from './ui/theme-toggle';
 
+const ThemeToggle = dynamic(() => import('./ui/theme-toggle'), {
+  loading: () => <Skeleton className='h-10 w-10 rounded-medium' />,
+  ssr: false
+});
 const Wallet = dynamic(() => import('./wallet'), {
   loading: () => <Skeleton className='h-10 w-32 rounded-medium' />,
   ssr: false
