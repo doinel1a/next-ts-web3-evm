@@ -16,14 +16,14 @@ type TENSName = {
 };
 
 export default function ENSName({ address }: TENSName) {
-  const { data: ensName } = useEnsName({
+  const { isFetching, data: ensName } = useEnsName({
     chainId: mainnet.id,
     address: address
   });
 
   return (
     <DropdownMenuLabel>
-      <Label property='ENS' value={ensName ?? 'N / A'} />
+      <Label property='ENS' value={ensName ?? 'N / A'} isLoading={isFetching && !ensName} />
     </DropdownMenuLabel>
   );
 }
