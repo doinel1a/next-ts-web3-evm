@@ -10,6 +10,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
@@ -32,6 +34,8 @@ export default function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent data-testid='theme-dropdown-content'>
+        <DropdownMenuLabel>Select theme</DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem data-testid='theme-light' onClick={() => setTheme('light')}>
           <Sun className='mr-2 h-[1.2rem] w-[1.2rem]' />
           Light
