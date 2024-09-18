@@ -7,7 +7,7 @@ import { useDisconnect } from 'wagmi';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
-import IconItem from '../icon-item';
+import IconItem from '../commons/icon-item';
 
 export default function Disconnect() {
   const { disconnect } = useDisconnect();

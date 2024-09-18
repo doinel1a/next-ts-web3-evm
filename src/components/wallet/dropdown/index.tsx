@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-import DynamicFallback from './dynamic-fallback';
+import DynamicFallback from './commons/dynamic-fallback';
 
 const CopyAddress = dynamic(() => import('./actions/copy-address'), {
   loading: () => <DynamicFallback />,
@@ -114,6 +114,7 @@ export default function WalletDropdown() {
             onDropdownSelect={handleDropdownItemSelect}
             onDialogOpenChange={(open) => setIsSwitchNetworkDialogOpen(open)}
           />
+          <DropdownMenuSeparator />
           <Disconnect />
         </DropdownMenuGroup>
       </DropdownMenuContent>

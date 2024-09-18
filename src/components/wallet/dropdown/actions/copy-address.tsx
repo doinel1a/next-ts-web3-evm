@@ -9,7 +9,7 @@ import { Check, ClipboardCopy } from 'lucide-react';
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import useCopyToClipboard from '@/lib/custom-hooks/use-copy-to-clipboard';
 
-import IconItem from '../icon-item';
+import IconItem from '../commons/icon-item';
 
 type TCopyAddress = {
   address: Address | undefined;

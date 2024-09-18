@@ -11,7 +11,7 @@ import QRCode from 'qrcode';
 import { DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import ForwardedDialog from '.';
-import IconDropdownMenuItem from '../../icon-item';
+import IconDropdownMenuItem from '../../commons/icon-item';
 
 type TQRCodeDialog = {
   isDialogOpen?: boolean;

@@ -8,7 +8,7 @@ import { useChainId, useChains } from 'wagmi';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
-import IconItem from '../icon-item';
+import IconItem from '../commons/icon-item';
 
 const FAUCET_URL = 'https://www.alchemy.com/faucets';
 

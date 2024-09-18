@@ -6,7 +6,7 @@ import { useChainId, useChains } from 'wagmi';
 
 import { DropdownMenuLabel } from '@/components/ui/dropdown-menu';
 
-import Label from './label';
+import Label from '../commons/label';
 
 export default function Network() {
   const chains = useChains();

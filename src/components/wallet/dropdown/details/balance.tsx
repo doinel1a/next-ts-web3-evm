@@ -9,7 +9,7 @@ import { useBalance } from 'wagmi';
 
 import { DropdownMenuLabel } from '@/components/ui/dropdown-menu';
 
-import Label from './label';
+import Label from '../commons/label';
 
 type TENSName = {
   address: Address | undefined;

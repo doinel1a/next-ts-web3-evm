@@ -13,7 +13,7 @@ import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useToast } from '@/components/ui/toast/use-toast';
 
 import ForwardedDialog from '.';
-import IconDropdownMenuItem from '../../icon-item';
+import IconDropdownMenuItem from '../../commons/icon-item';
 
 type TSwitchNetworkDialog = {
   isDialogOpen?: boolean;
