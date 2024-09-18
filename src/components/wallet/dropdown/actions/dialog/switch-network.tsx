@@ -146,7 +146,7 @@ type TChainsList = {
   isSwitchSuccess: boolean;
   isSwitchError: boolean;
   chainsList: Chain[];
-  onSwitchChain(chainId: number): Promise<void>;
+  onSwitchChain: (chainId: number) => Promise<void>;
 };
 
 function ChainsList({
