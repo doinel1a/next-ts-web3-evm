@@ -29,9 +29,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <body>
         <RootProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <div className='grid min-h-[100dvh] grid-rows-[auto_1fr_auto]'>
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
 
           <Toaster />
         </RootProvider>
