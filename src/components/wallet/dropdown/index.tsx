@@ -23,7 +23,7 @@ const QRCodeDialog = dynamic(() => import('./actions/dialog/qrcode'), {
   loading: () => <DynamicFallback />,
   ssr: false
 });
-const SwitchNetworkDialog = dynamic(() => import('./actions/dialog/switch-network'), {
+const SwitchChainDialog = dynamic(() => import('./actions/dialog/switch-chain'), {
   loading: () => <DynamicFallback />,
   ssr: false
 });
@@ -43,7 +43,7 @@ const ENSName = dynamic(() => import('./details/ens-name'), {
   loading: () => <DynamicFallback />,
   ssr: false
 });
-const Network = dynamic(() => import('./details/network'), {
+const Chain = dynamic(() => import('./details/chain'), {
   loading: () => <DynamicFallback />,
   ssr: false
 });
@@ -51,7 +51,7 @@ const Network = dynamic(() => import('./details/network'), {
 export default function WalletDropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isQRCodeDialogOpen, setIsQRCodeDialogOpen] = useState(false);
-  const [isSwitchNetworkDialogOpen, setIsSwitchNetworkDialogOpen] = useState(false);
+  const [isSwitchChainDialogOpen, setIsSwitchChainDialogOpen] = useState(false);
 
   const dropdownTriggerReference = useRef<HTMLButtonElement | null>(null);
   const focusReference = useRef<HTMLButtonElement | null>(null);
@@ -79,7 +79,7 @@ export default function WalletDropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className='w-56'
-        hidden={isQRCodeDialogOpen || isSwitchNetworkDialogOpen}
+        hidden={isQRCodeDialogOpen || isSwitchChainDialogOpen}
         onCloseAutoFocus={(event) => {
           if (focusReference.current) {
             focusReference.current.focus();
@@ -94,7 +94,7 @@ export default function WalletDropdown() {
         <DropdownMenuGroup>
           <ENSName address={address} />
           <Balance address={address} />
-          <Network />
+          <Chain />
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
@@ -108,11 +108,11 @@ export default function WalletDropdown() {
             onDropdownSelect={handleDropdownItemSelect}
             onDialogOpenChange={(open) => setIsQRCodeDialogOpen(open)}
           />
-          <SwitchNetworkDialog
-            isDialogOpen={isSwitchNetworkDialogOpen}
+          <SwitchChainDialog
+            isDialogOpen={isSwitchChainDialogOpen}
             setIsDropdownOpen={setIsDropdownOpen}
             onDropdownSelect={handleDropdownItemSelect}
-            onDialogOpenChange={(open) => setIsSwitchNetworkDialogOpen(open)}
+            onDialogOpenChange={(open) => setIsSwitchChainDialogOpen(open)}
           />
           <DropdownMenuSeparator />
           <Disconnect />

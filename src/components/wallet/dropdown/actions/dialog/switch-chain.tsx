@@ -1,109 +1,107 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import type { Chain } from 'viem';
 
 import { Button } from '@nextui-org/button';
 import { RefreshCcw } from 'lucide-react';
+import { toast } from 'sonner';
 import { useChainId, useSwitchChain } from 'wagmi';
 
-import SuccessToastContent from '@/components/success-toast-content';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { useToast } from '@/components/ui/toast/use-toast';
 
 import ForwardedDialog from '.';
 import IconDropdownMenuItem from '../../commons/icon-item';
 
-type TSwitchNetworkDialog = {
+type TSwitchChainDialog = {
   isDialogOpen?: boolean;
   setIsDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onDropdownSelect: () => void;
   onDialogOpenChange: (open: boolean) => void;
 };
 
-export default function SwitchNetworkDialog({
+export default function SwitchChainDialog({
   isDialogOpen,
   setIsDropdownOpen,
   onDropdownSelect,
   onDialogOpenChange
-}: TSwitchNetworkDialog) {
+}: TSwitchChainDialog) {
   const activeChainId = useChainId();
   const { chains, variables, isError, isSuccess, reset, switchChainAsync } = useSwitchChain();
+  const mainnetChains = useMemo(() => chains.filter((chain) => !!!chain.testnet), [chains]);
+  const testnetChains = useMemo(() => chains.filter((chain) => !!chain.testnet), [chains]);
 
   const activeChain = useMemo(
     () => chains.find((chain) => chain.id === activeChainId),
     [activeChainId, chains]
   );
-  const mainnetChains = useMemo(() => chains.filter((chain) => !!!chain.testnet), [chains]);
-  const testnetChains = useMemo(() => chains.filter((chain) => !!chain.testnet), [chains]);
 
-  const { toast } = useToast();
-
-  async function onSwitchChain(chainId: number) {
-    if (activeChainId === chainId) {
-      return;
-    }
-
-    try {
-      await switchChainAsync({ chainId });
-
-      onDialogOpenChange(false);
-      setIsDropdownOpen(false);
-
-      toast({
-        description: (
-          <SuccessToastContent>
-            <div>
-              <p>The Switch Network request was successfull.</p>
-              {activeChain ? (
-                <p>
-                  Switched Network to <span className='font-semibold'>{activeChain.name}</span>.
-                </p>
-              ) : null}
-            </div>
-          </SuccessToastContent>
-        )
-      });
-    } catch (error: unknown) {
-      if (
-        error !== null &&
-        error !== undefined &&
-        typeof error === 'object' &&
-        'name' in error &&
-        typeof error.name === 'string'
-      ) {
-        let errorMessage = '';
-
-        switch (error.name) {
-          case 'UserRejectedRequestError': {
-            errorMessage = 'The Switch Network request was rejected.';
-            break;
-          }
-          case 'SwitchChainError': {
-            errorMessage = 'A Switch Network request is already pending.';
-            break;
-          }
-          default: {
-            errorMessage = 'Something horribly wrong happened.';
-            break;
-          }
-        }
-
-        toast({
-          variant: 'destructive',
-          description: errorMessage
-        });
+  const onSwitchChain = useCallback(
+    async (chainId: number) => {
+      if (activeChainId === chainId) {
+        return;
       }
 
-      console.error('Error switching chain', error);
-    }
-  }
+      try {
+        await switchChainAsync({ chainId });
+
+        onDialogOpenChange(false);
+        setIsDropdownOpen(false);
+
+        toast.success('Success', {
+          description: (
+            <>
+              {activeChain ? (
+                <p>
+                  Chain switched to <span className='font-semibold'>{activeChain.name}</span>.
+                </p>
+              ) : (
+                <p>Chain switched.</p>
+              )}
+            </>
+          )
+        });
+      } catch (error: unknown) {
+        if (
+          error !== null &&
+          error !== undefined &&
+          typeof error === 'object' &&
+          'name' in error &&
+          typeof error.name === 'string'
+        ) {
+          let errorMessage = '';
+
+          switch (error.name) {
+            case 'UserRejectedRequestError': {
+              errorMessage = 'The switch chain request was rejected.';
+              break;
+            }
+            case 'SwitchChainError': {
+              errorMessage = 'A switch chain request is already pending.';
+              break;
+            }
+            default: {
+              errorMessage = 'Something horribly wrong happened.';
+              break;
+            }
+          }
+
+          toast.error('Error', {
+            description: errorMessage
+          });
+        }
+
+        console.error('Error switching chain', error);
+      }
+    },
+    [activeChainId, activeChain, onDialogOpenChange, setIsDropdownOpen, switchChainAsync]
+  );
 
   return (
     <ForwardedDialog
       isDialogOpen={isDialogOpen}
-      triggerChildren={<IconDropdownMenuItem icon={RefreshCcw} text='Switch Network' />}
+      triggerChildren={<IconDropdownMenuItem icon={RefreshCcw} text='Switch Chain' />}
       onDropdownSelect={onDropdownSelect}
       onDialogOpenChange={(open) => {
         onDialogOpenChange(open);
@@ -111,7 +109,7 @@ export default function SwitchNetworkDialog({
       }}
     >
       <DialogHeader>
-        <DialogTitle>Switch Network</DialogTitle>
+        <DialogTitle>Switch Chain</DialogTitle>
       </DialogHeader>
 
       <div className='flex flex-col gap-y-3'>
