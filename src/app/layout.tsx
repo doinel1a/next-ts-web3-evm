@@ -9,7 +9,7 @@ import config from '_config';
 
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { Toaster } from '@/components/ui/toast/toaster';
+import { Toaster } from '@/components/ui/sonner';
 import RootProvider from '@/providers/root';
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </div>
 
-          <Toaster />
+          <Toaster richColors closeButton pauseWhenPageIsHidden />
         </RootProvider>
       </body>
     </html>
