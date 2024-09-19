@@ -8,7 +8,7 @@ import { ClipboardCopy } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import useCopyToClipboard from '@/lib/custom-hooks/use-copy-to-clipboard';
+import useCopyToClipboard from '@/hooks/use-copy-to-clipboard';
 
 import IconItem from '../commons/icon-item';
 
