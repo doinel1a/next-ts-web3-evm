@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { Skeleton } from '@nextui-org/skeleton';
 import dynamic from 'next/dynamic';
-
-import { Skeleton } from './ui/skeleton';
 
 const ThemeToggle = dynamic(() => import('./ui/theme-toggle'), {
   loading: () => <Skeleton className='h-10 w-10 rounded-medium' />,
