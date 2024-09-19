@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import type { Address } from 'viem';
 
-import { Check, ClipboardCopy } from 'lucide-react';
+import { ClipboardCopy } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import useCopyToClipboard from '@/lib/custom-hooks/use-copy-to-clipboard';
@@ -16,21 +17,23 @@ type TCopyAddress = {
 };
 
 export default function CopyAddress({ address }: TCopyAddress) {
-  const { isClipboardApiSupported, isCopied, copyToClipboard } = useCopyToClipboard();
+  const { isClipboardApiSupported, copyToClipboard } = useCopyToClipboard();
+
+  const onCopyAddressClick = useCallback(() => {
+    toast.promise(copyToClipboard(address), {
+      loading: 'Copying address to clipboard',
+      success: 'Address copied to clipboard',
+      error: 'Error copying address to clipboard'
+    });
+  }, [address, copyToClipboard]);
 
   if (!isClipboardApiSupported) {
     return null;
   }
 
   return (
-    <DropdownMenuItem
-      onClick={async () => {
-        if (isClipboardApiSupported && address) {
-          await copyToClipboard(address);
-        }
-      }}
-    >
-      <IconItem icon={isCopied ? Check : ClipboardCopy} text='Copy Address' />
+    <DropdownMenuItem onClick={onCopyAddressClick}>
+      <IconItem icon={ClipboardCopy} text='Copy Address' />
     </DropdownMenuItem>
   );
 }
