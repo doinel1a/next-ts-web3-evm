@@ -6,7 +6,7 @@ import React from 'react';
 import { Dialog, DialogContent, DialogPortal, DialogTrigger } from '@/components/ui/dialog';
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
-type TDialog = {
+type TForwardedDialog = {
   isDialogOpen?: boolean;
   triggerChildren: React.ReactNode;
   children: React.ReactNode;
@@ -14,36 +14,36 @@ type TDialog = {
   onDialogOpenChange: (open: boolean) => void;
 };
 
-function _Dialog(
-  {
-    isDialogOpen,
-    triggerChildren,
-    children: contentChildren,
-    onDropdownSelect,
-    onDialogOpenChange
-  }: TDialog,
-  forwardedReference: React.Ref<HTMLDivElement>
-) {
-  return (
-    <Dialog open={isDialogOpen} onOpenChange={onDialogOpenChange}>
-      <DialogTrigger asChild>
-        <DropdownMenuItem
-          ref={forwardedReference}
-          onSelect={(event) => {
-            event.preventDefault();
-            onDropdownSelect();
-          }}
-        >
-          {triggerChildren}
-        </DropdownMenuItem>
-      </DialogTrigger>
-      <DialogPortal>
-        <DialogContent>{contentChildren}</DialogContent>
-      </DialogPortal>
-    </Dialog>
-  );
-}
-
-const ForwardedDialog = React.forwardRef<HTMLDivElement, TDialog>(_Dialog);
+const ForwardedDialog = React.forwardRef<HTMLDivElement, TForwardedDialog>(
+  function DialogWithReference(
+    {
+      isDialogOpen,
+      triggerChildren,
+      children,
+      onDropdownSelect,
+      onDialogOpenChange
+    }: TForwardedDialog,
+    forwardedReference
+  ) {
+    return (
+      <Dialog open={isDialogOpen} onOpenChange={onDialogOpenChange}>
+        <DialogTrigger asChild>
+          <DropdownMenuItem
+            ref={forwardedReference}
+            onSelect={(event) => {
+              event.preventDefault();
+              onDropdownSelect();
+            }}
+          >
+            {triggerChildren}
+          </DropdownMenuItem>
+        </DialogTrigger>
+        <DialogPortal>
+          <DialogContent>{children}</DialogContent>
+        </DialogPortal>
+      </Dialog>
+    );
+  }
+);
 
 export default ForwardedDialog;

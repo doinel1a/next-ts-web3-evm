@@ -6,9 +6,9 @@ import { useChainId, useChains } from 'wagmi';
 
 import { DropdownMenuLabel } from '@/components/ui/dropdown-menu';
 
-import Label from './label';
+import Label from '../commons/label';
 
-export default function Network() {
+export default function Chain() {
   const chains = useChains();
   const activeChainId = useChainId();
 
@@ -19,7 +19,7 @@ export default function Network() {
 
   return (
     <DropdownMenuLabel>
-      <Label property='Network' value={activeChain?.name ?? 'N / A'} />
+      <Label property='Chain' value={activeChain?.name ?? 'N / A'} />
     </DropdownMenuLabel>
   );
 }

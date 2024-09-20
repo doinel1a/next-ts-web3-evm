@@ -10,7 +10,7 @@ export default function useCopyToClipboard(timeout = 2000) {
   }, []);
 
   const copyToClipboard = useCallback(
-    async (content: string) => {
+    async (content: string | null | undefined) => {
       if (typeof window === 'undefined') {
         return;
       }
@@ -19,8 +19,8 @@ export default function useCopyToClipboard(timeout = 2000) {
         return;
       }
 
-      if (content === null || content === undefined) {
-        return;
+      if (!content) {
+        throw new Error('ERROR CLIPBOARD');
       }
 
       navigator.clipboard

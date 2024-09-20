@@ -8,8 +8,9 @@ import type { Metadata, Viewport } from 'next';
 import config from '_config';
 
 import Footer from '@/components/footer';
+import WithSupportedChains from '@/components/hoc/with-supported-chains';
 import Navbar from '@/components/navbar';
-import { Toaster } from '@/components/ui/toast/toaster';
+import { Toaster } from '@/components/ui/sonner';
 import RootProvider from '@/providers/root';
 
 export const metadata: Metadata = {
@@ -29,11 +30,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <body>
         <RootProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <WithSupportedChains>
+            <div className='grid min-h-[100dvh] grid-rows-[auto_1fr_auto]'>
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </WithSupportedChains>
 
-          <Toaster />
+          <Toaster richColors closeButton pauseWhenPageIsHidden />
         </RootProvider>
       </body>
     </html>
