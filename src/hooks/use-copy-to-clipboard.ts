@@ -11,6 +11,7 @@ export default function useCopyToClipboard(timeout = 2000) {
 
   const copyToClipboard = useCallback(
     async (content: string | null | undefined) => {
+      // eslint-disable-next-line unicorn/prefer-global-this
       if (typeof window === 'undefined') {
         return;
       }
