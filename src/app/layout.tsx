@@ -10,8 +10,8 @@ import config from '_config';
 import Footer from '@/components/footer';
 import WithSupportedChains from '@/components/hoc/with-supported-chains';
 import Navbar from '@/components/navbar';
+import RootProvider from '@/components/providers/root';
 import { Toaster } from '@/components/ui/sonner';
-import RootProvider from '@/providers/root';
 
 export const metadata: Metadata = {
   title: config.metadata.title,
