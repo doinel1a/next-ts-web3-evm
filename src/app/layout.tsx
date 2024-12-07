@@ -6,6 +6,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 
 import config from '_config';
+import { Analytics } from '@vercel/analytics/react';
 
 import Footer from '@/components/footer';
 import GithubCorner from '@/components/github-corner';
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </WithSupportedChains>
 
+          <Analytics />
           <Toaster richColors closeButton pauseWhenPageIsHidden />
         </RootProvider>
       </body>
