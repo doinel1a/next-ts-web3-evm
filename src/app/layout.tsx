@@ -8,6 +8,7 @@ import type { Metadata, Viewport } from 'next';
 import config from '_config';
 
 import Footer from '@/components/footer';
+import GithubCorner from '@/components/github-corner';
 import WithSupportedChains from '@/components/hoc/with-supported-chains';
 import Navbar from '@/components/navbar';
 import RootProvider from '@/components/providers/root';
@@ -35,6 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Navbar />
               {children}
               <Footer />
+
+              <GithubCorner
+                title='Get started on GitHub'
+                url='https://github.com/doinel1a/next-ts-web3-evm'
+              />
             </div>
           </WithSupportedChains>
 
