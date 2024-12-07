@@ -4,12 +4,10 @@ import { Skeleton } from '@nextui-org/skeleton';
 import dynamic from 'next/dynamic';
 
 const ThemeToggle = dynamic(() => import('./ui/theme-toggle'), {
-  loading: () => <Skeleton className='h-10 w-10 rounded-medium' />,
-  ssr: false
+  loading: () => <Skeleton className='h-10 w-10 rounded-medium' />
 });
 const Wallet = dynamic(() => import('./wallet'), {
-  loading: () => <Skeleton className='h-10 w-32 rounded-medium' />,
-  ssr: false
+  loading: () => <Skeleton className='h-10 w-32 rounded-medium' />
 });
 
 export default function Navbar() {
