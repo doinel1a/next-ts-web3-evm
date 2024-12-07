@@ -10,11 +10,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 
+import { env } from '@/env';
+
 const { wallets: defaultWallets } = getDefaultWallets();
 
 const wagmiConfig = getDefaultConfig({
   appName: 'RainbowKit demo',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '',
+  projectId: env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
   wallets: [
     ...defaultWallets,
     {
