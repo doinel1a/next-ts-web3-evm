@@ -4,7 +4,7 @@ import React from 'react';
 
 import type { Chain } from 'viem';
 
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 
 type TChainsList = {
   title: string;

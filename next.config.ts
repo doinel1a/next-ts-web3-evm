@@ -8,7 +8,8 @@
  */
 import './src/env.js';
 
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next';
+
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
@@ -18,6 +19,6 @@ const nextConfig = {
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
     return config;
   }
-};
+} satisfies NextConfig;
 
 export default nextConfig;

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { Laptop, MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 

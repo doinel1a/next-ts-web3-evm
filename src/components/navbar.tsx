@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Skeleton } from '@nextui-org/skeleton';
+import { Skeleton } from '@heroui/skeleton';
 import dynamic from 'next/dynamic';
 
 const ThemeToggle = dynamic(() => import('./ui/theme-toggle'), {

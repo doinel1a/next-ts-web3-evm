@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import dynamic from 'next/dynamic';
 import { useAccount } from 'wagmi';
 

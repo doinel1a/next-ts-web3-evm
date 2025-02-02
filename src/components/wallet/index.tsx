@@ -6,7 +6,7 @@ import React from 'react';
 
 import type { ComponentProps } from 'react';
 
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 
