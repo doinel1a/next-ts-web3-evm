@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </WithSupportedChains>
 
           <Analytics />
-          <Toaster richColors closeButton pauseWhenPageIsHidden />
+          <Toaster richColors closeButton />
         </RootProvider>
       </body>
     </html>
