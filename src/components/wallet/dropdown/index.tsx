@@ -58,7 +58,7 @@ export default function WalletDropdown() {
 
   const { address } = useAccount();
   const displayAddress = useMemo(
-    () => `${address?.slice(0, 8)}...${address?.slice(-8)}`,
+    () => `${address?.slice(0, 6)}...${address?.slice(-6)}`,
     [address]
   );
 
@@ -72,7 +72,8 @@ export default function WalletDropdown() {
         <Button
           ref={dropdownTriggerReference}
           color='default'
-          onClick={() => setIsDropdownOpen((previousState) => !previousState)}
+          className='w-32'
+          onPress={() => setIsDropdownOpen((previousState) => !previousState)}
         >
           {displayAddress}
         </Button>

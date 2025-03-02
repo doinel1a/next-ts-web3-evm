@@ -34,7 +34,7 @@ export default function ChainsList({
             <Button
               color='secondary'
               className='w-full items-center justify-start'
-              onClick={() => onSwitchChain(chain.id)}
+              onPress={() => onSwitchChain(chain.id)}
             >
               {chain.name}
             </Button>
