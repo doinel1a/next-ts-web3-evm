@@ -1,13 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import type { PropsWithChildren } from 'react';
 
-import { getDefaultConfig, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import {
+  darkTheme,
+  getDefaultConfig,
+  getDefaultWallets,
+  lightTheme,
+  RainbowKitProvider
+} from '@rainbow-me/rainbowkit';
 import { ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { rainbowkitBurnerWallet } from 'burner-connector';
+import { useTheme } from 'next-themes';
 import { WagmiProvider } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 
@@ -34,10 +41,21 @@ const queryClient = new QueryClient();
 type TWeb3Provider = PropsWithChildren;
 
 export default function Web3Provider({ children }: TWeb3Provider) {
+  const { resolvedTheme } = useTheme();
+  const isDarkTheme = useMemo(() => resolvedTheme === 'dark', [resolvedTheme]);
+
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
+        <RainbowKitProvider
+          theme={
+            isDarkTheme
+              ? darkTheme({ borderRadius: 'small' })
+              : lightTheme({ borderRadius: 'small' })
+          }
+        >
+          {children}
+        </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
