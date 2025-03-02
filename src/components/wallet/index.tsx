@@ -27,7 +27,7 @@ export default function Wallet({ className }: TWallet) {
 
   if (isDisconnected) {
     return (
-      <Button color='primary' className={cn('w-32', className)} onClick={openConnectModal}>
+      <Button color='primary' className={cn('w-32', className)} onPress={openConnectModal}>
         Connect Wallet
       </Button>
     );

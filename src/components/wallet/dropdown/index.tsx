@@ -73,7 +73,7 @@ export default function WalletDropdown() {
           ref={dropdownTriggerReference}
           color='default'
           className='w-32'
-          onClick={() => setIsDropdownOpen((previousState) => !previousState)}
+          onPress={() => setIsDropdownOpen((previousState) => !previousState)}
         >
           {displayAddress}
         </Button>
