@@ -5,8 +5,9 @@ import React from 'react';
 import type { PropsWithChildren } from 'react';
 
 import { getDefaultConfig, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { argentWallet, ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { rainbowkitBurnerWallet } from 'burner-connector';
 import { WagmiProvider } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 
@@ -21,7 +22,7 @@ const wagmiConfig = getDefaultConfig({
     ...defaultWallets,
     {
       groupName: 'More',
-      wallets: [argentWallet, trustWallet, ledgerWallet]
+      wallets: [trustWallet, ledgerWallet, rainbowkitBurnerWallet]
     }
   ],
   chains: [mainnet, sepolia],
