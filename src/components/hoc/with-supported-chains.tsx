@@ -55,7 +55,7 @@ export default function WithSupportedChains({ children }: TWithSupportedChains) 
     <>
       <Dialog open={isSwitchChainDialogOpen} onOpenChange={onDialogOpenChange}>
         <DialogPortal>
-          <DialogContent>
+          <DialogContent hideCloseButton>
             <SwitchChainDialogContent
               activeChainId={activeChainId}
               pendingChainId={variables?.chainId ?? 0}
@@ -63,7 +63,7 @@ export default function WithSupportedChains({ children }: TWithSupportedChains) 
               isSwitchError={isError}
               mainnetChains={mainnetChains}
               testnetChains={testnetChains}
-              description='Please switch to a supported chain.'
+              description='You are connected to an unsupported chain. Please switch to a chain from the list below.'
               onSwitchChain={onSwitchChain}
             />
           </DialogContent>
