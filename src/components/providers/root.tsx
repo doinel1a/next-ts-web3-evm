@@ -2,9 +2,9 @@ import React from 'react';
 
 import type { PropsWithChildren } from 'react';
 
-import HeroUiProvider from './hero-ui';
-import ThemeProvider from './theme';
-import Web3Provider from './web3';
+import HeroUiProvider from './client/hero-ui';
+import ThemeProvider from './client/theme';
+import Web3Provider from './client/web3';
 
 type TRootProvider = PropsWithChildren;
 
