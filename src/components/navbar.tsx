@@ -16,8 +16,8 @@ export default function Navbar() {
       <span className='text-lg font-black'>Template</span>
 
       <div className='flex items-center gap-x-5 pr-20'>
-        <ThemeToggle />
         <Wallet className='w-32' />
+        <ThemeToggle />
       </div>
     </header>
   );
