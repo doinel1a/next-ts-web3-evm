@@ -13,6 +13,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { rainbowkitBurnerWallet } from 'burner-connector';
 import { useTheme } from 'next-themes';
 import { WagmiProvider } from 'wagmi';
@@ -55,6 +56,8 @@ export default function Web3Provider({ children }: TWeb3Provider) {
           }
         >
           {children}
+
+          <ReactQueryDevtools initialIsOpen={false} />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
