@@ -12,7 +12,7 @@ type TIconItem = {
   className?: string;
 };
 
-export default function IconItem({ icon: Icon, text, className }: TIconItem) {
+export default function IconItem({ icon: Icon, text, className }: Readonly<TIconItem>) {
   return (
     <div className={cn('flex items-center gap-x-2.5', className)}>
       <Icon size={17} />

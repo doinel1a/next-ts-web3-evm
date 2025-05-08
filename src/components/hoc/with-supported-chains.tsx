@@ -11,7 +11,7 @@ import SwitchChainDialogContent from '../switch-chain/dialog-content';
 
 type TWithSupportedChains = PropsWithChildren;
 
-export default function WithSupportedChains({ children }: TWithSupportedChains) {
+export default function WithSupportedChains({ children }: Readonly<TWithSupportedChains>) {
   const [isSwitchChainDialogOpen, setIsSwitchChainDialogOpen] = useState(false);
 
   const {

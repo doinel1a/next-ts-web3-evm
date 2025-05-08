@@ -22,7 +22,7 @@ export default function SwitchChainDialog({
   setIsDropdownOpen,
   onDropdownSelect,
   onDialogOpenChange
-}: TSwitchChainDialog) {
+}: Readonly<TSwitchChainDialog>) {
   const onSwitchSuccessCallback = useCallback(() => {
     onDialogOpenChange(false);
     setIsDropdownOpen(false);

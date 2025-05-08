@@ -15,7 +15,9 @@ export default function Disconnect() {
   return (
     <DropdownMenuItem
       className='text-destructive hover:!bg-destructive hover:text-destructive-foreground focus:!bg-destructive focus:text-destructive-foreground'
-      onClick={() => disconnect()}
+      onClick={() => {
+        disconnect();
+      }}
     >
       <IconItem icon={LogOut} text='Disconnect' />
     </DropdownMenuItem>

@@ -16,7 +16,7 @@ type TCopyAddress = {
   address: Address | undefined;
 };
 
-export default function CopyAddress({ address }: TCopyAddress) {
+export default function CopyAddress({ address }: Readonly<TCopyAddress>) {
   const { isClipboardApiSupported, copyToClipboard } = useCopyToClipboard();
 
   const onCopyAddressClick = useCallback(() => {

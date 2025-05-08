@@ -15,7 +15,7 @@ type TBalance = {
   address: Address | undefined;
 };
 
-export default function Balance({ address }: TBalance) {
+export default function Balance({ address }: Readonly<TBalance>) {
   const { isFetching, data: balance } = useBalance({ address });
 
   const walletBalance = useMemo(

@@ -60,5 +60,10 @@ export default tseslint.config(
         projectService: true
       }
     }
+  },
+  {
+    rules: {
+      'unicorn/no-null': 'off'
+    }
   }
 );

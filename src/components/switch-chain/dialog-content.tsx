@@ -28,7 +28,7 @@ export default function SwitchChainDialogContent({
   testnetChains,
   description,
   onSwitchChain
-}: TSwitchChainDialogContent) {
+}: Readonly<TSwitchChainDialogContent>) {
   if (!activeChainId) {
     return null;
   }

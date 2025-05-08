@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-nested-conditional */
+
 'use client';
 
 import React from 'react';
@@ -24,7 +26,7 @@ export default function ChainsList({
   isSwitchError,
   chainsList,
   onSwitchChain
-}: TChainsList) {
+}: Readonly<TChainsList>) {
   return (
     <div className='flex flex-col gap-y-1.5'>
       <h3>{title}</h3>

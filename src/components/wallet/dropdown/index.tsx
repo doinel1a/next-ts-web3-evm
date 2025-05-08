@@ -57,10 +57,15 @@ export default function WalletDropdown() {
   const focusReference = useRef<HTMLButtonElement | null>(null);
 
   const { address } = useAccount();
-  const displayAddress = useMemo(
-    () => `${address?.slice(0, 6)}...${address?.slice(-6)}`,
-    [address]
-  );
+  const displayAddress = useMemo(() => {
+    const firtPart = address?.slice(0, 6);
+    const lastPart = address?.slice(-6);
+    if (firtPart && lastPart) {
+      return `${firtPart}...${lastPart}`;
+    }
+
+    return 'N / A';
+  }, [address]);
 
   function handleDropdownItemSelect() {
     focusReference.current = dropdownTriggerReference.current;
@@ -73,7 +78,9 @@ export default function WalletDropdown() {
           ref={dropdownTriggerReference}
           color='default'
           className='w-32'
-          onPress={() => setIsDropdownOpen((previousState) => !previousState)}
+          onPress={() => {
+            setIsDropdownOpen((previousState) => !previousState);
+          }}
         >
           {displayAddress}
         </Button>
@@ -107,13 +114,17 @@ export default function WalletDropdown() {
             isDialogOpen={isQRCodeDialogOpen}
             address={address}
             onDropdownSelect={handleDropdownItemSelect}
-            onDialogOpenChange={(open) => setIsQRCodeDialogOpen(open)}
+            onDialogOpenChange={(open) => {
+              setIsQRCodeDialogOpen(open);
+            }}
           />
           <SwitchChainDialog
             isDialogOpen={isSwitchChainDialogOpen}
             setIsDropdownOpen={setIsDropdownOpen}
             onDropdownSelect={handleDropdownItemSelect}
-            onDialogOpenChange={(open) => setIsSwitchChainDialogOpen(open)}
+            onDialogOpenChange={(open) => {
+              setIsSwitchChainDialogOpen(open);
+            }}
           />
           <DropdownMenuSeparator />
           <Disconnect />

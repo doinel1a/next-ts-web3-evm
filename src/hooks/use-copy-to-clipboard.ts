@@ -5,7 +5,7 @@ export default function useCopyToClipboard(timeout = 2000) {
   const [isClipboardApiSupported, setIsClipboardApiSupported] = useState(true);
 
   useEffect(() => {
-    const isClipboardApiSupported = !!navigator.clipboard?.writeText;
+    const isClipboardApiSupported = !!navigator.clipboard.writeText;
     setIsClipboardApiSupported(isClipboardApiSupported);
   }, []);
 
@@ -35,7 +35,9 @@ export default function useCopyToClipboard(timeout = 2000) {
 
           return null;
         })
-        .catch((error) => console.error('ERROR CLIPBOARD', error));
+        .catch((error) => {
+          console.error('ERROR CLIPBOARD', error);
+        });
     },
     [timeout, isClipboardApiSupported]
   );

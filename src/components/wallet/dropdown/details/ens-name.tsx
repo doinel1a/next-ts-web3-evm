@@ -15,7 +15,7 @@ type TENSName = {
   address: Address | undefined;
 };
 
-export default function ENSName({ address }: TENSName) {
+export default function ENSName({ address }: Readonly<TENSName>) {
   const {
     isFetching,
     isFetched,

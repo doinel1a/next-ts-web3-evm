@@ -25,7 +25,7 @@ export default function QRCodeDialog({
   address,
   onDropdownSelect,
   onDialogOpenChange
-}: TQRCodeDialog) {
+}: Readonly<TQRCodeDialog>) {
   const [base64QRCode, setBase64QRCode] = useState<string | null>(null);
 
   useEffect(() => {

@@ -41,7 +41,7 @@ const queryClient = new QueryClient();
 
 type TWeb3Provider = PropsWithChildren;
 
-export default function Web3Provider({ children }: TWeb3Provider) {
+export default function Web3Provider({ children }: Readonly<TWeb3Provider>) {
   const { resolvedTheme } = useTheme();
   const isDarkTheme = useMemo(() => resolvedTheme === 'dark', [resolvedTheme]);
 
