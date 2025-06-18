@@ -21,7 +21,7 @@ export default function Label({
 }: TLabel) {
   return (
     <div className={cn('flex h-[20px] w-full justify-between', className)} {...otherProperties}>
-      <span className='w-1/2 text-muted-foreground'>{property}</span>
+      <span className='text-muted-foreground w-1/2'>{property}</span>
       {isLoading ? (
         <DynamicFallback className='my-0 w-1/2' />
       ) : (

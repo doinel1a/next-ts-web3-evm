@@ -67,7 +67,7 @@ export default function QRCodeDialog({
           alt='Address QR Code'
           width={480}
           height={480}
-          className='w-[30rem] rounded-md'
+          className='w-120 rounded-md'
         />
       </div>
     </ForwardedDialog>
