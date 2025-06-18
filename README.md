@@ -17,7 +17,7 @@
 # Next.js 15 TypeScript Web3 EVM — Template
 
 This development starter template is the ultimate solution to help you getting started on your project in no time, without the hassle of setting up and configuring your development environment from scratch each time you start working.
-This repository is ideal for web3 and dapp (decentralized application) developers who want to build modern, fast and reliable web3 applications with the latest cutting edge technologies such as **Next.js 15**, **React.js 19**, **TypeScript**, **Shadcn/ui**, **HeroUI**, **TailwindCSS**, **RainbowKit**, **Viem**, **Wagmi** and much more!
+This repository is ideal for web3 and dapp (decentralized application) developers who want to build modern, fast and reliable web3 applications with the latest cutting edge technologies such as **Next.js 15**, **React.js 19**, **TypeScript**, **Shadcn/ui**, **HeroUI**, **TailwindCSS 4**, **RainbowKit**, **Viem**, **Wagmi** and much more!
 
 ---
 
@@ -74,7 +74,7 @@ This repository comes 🔋 packed with:
 - **React.js 19**;
 - **Shadcn/ui**;
 - **HeroUI**;
-- **TailwindCSS**;
+- **TailwindCSS 4**;
 - **SASS** & **SCSS**;
 - **RainbowKit**;
 - **Viem**;
