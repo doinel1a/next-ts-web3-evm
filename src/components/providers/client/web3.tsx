@@ -14,7 +14,6 @@ import {
 import { ledgerWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { rainbowkitBurnerWallet } from 'burner-connector';
 import { useTheme } from 'next-themes';
 import { WagmiProvider } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
@@ -30,7 +29,7 @@ const wagmiConfig = getDefaultConfig({
     ...defaultWallets,
     {
       groupName: 'More',
-      wallets: [trustWallet, ledgerWallet, rainbowkitBurnerWallet]
+      wallets: [trustWallet, ledgerWallet]
     }
   ],
   chains: [mainnet, sepolia],
