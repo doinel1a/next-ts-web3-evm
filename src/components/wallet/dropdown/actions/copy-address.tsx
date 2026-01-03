@@ -4,7 +4,6 @@ import React, { useCallback } from 'react';
 
 import type { Address } from 'viem';
 
-import { IconClipboardCopy } from '@tabler/icons-react';
 import { toast } from 'sonner';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
@@ -33,7 +32,7 @@ export default function CopyAddress({ address }: Readonly<TCopyAddress>) {
 
   return (
     <DropdownMenuItem onClick={onCopyAddressClick}>
-      <IconItem icon={IconClipboardCopy} text='Copy Address' />
+      <IconItem iconName='IconClipboardCopy' text='Copy Address' />
     </DropdownMenuItem>
   );
 }

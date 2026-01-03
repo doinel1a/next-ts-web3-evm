@@ -2,7 +2,6 @@
 
 import React, { useMemo } from 'react';
 
-import { IconCoins } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useChainId, useChains } from 'wagmi';
 
@@ -29,7 +28,7 @@ export default function Faucet() {
   return (
     <DropdownMenuItem>
       <Link href={FAUCET_URL} target='_blank' className='cursor-default'>
-        <IconItem icon={IconCoins} text='Faucet' />
+        <IconItem iconName='IconCoins' text='Faucet' />
       </Link>
     </DropdownMenuItem>
   );
