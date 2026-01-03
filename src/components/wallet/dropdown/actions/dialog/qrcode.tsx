@@ -29,19 +29,28 @@ export default function QRCodeDialog({
 
   useEffect(() => {
     if (!address) {
-      setBase64QRCode(null);
       return;
     }
 
+    let isMounted = true;
+
     QRCode.toDataURL(address)
       .then((imageBase64) => {
-        setBase64QRCode(imageBase64);
+        if (isMounted) {
+          setBase64QRCode(imageBase64);
+        }
         return null;
       })
       .catch((error) => {
         console.error('Error generating address QRCode', error);
-        setBase64QRCode(null);
+        if (isMounted) {
+          setBase64QRCode(null);
+        }
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [address]);
 
   if (!base64QRCode) {
