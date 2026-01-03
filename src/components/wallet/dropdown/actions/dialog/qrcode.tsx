@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import type { Address } from 'viem';
 
-import { QrCode } from 'lucide-react';
+import { IconQrcode } from '@tabler/icons-react';
 import Image from 'next/image';
 import QRCode from 'qrcode';
 
@@ -52,7 +52,7 @@ export default function QRCodeDialog({
   return (
     <ForwardedDialog
       isDialogOpen={isDialogOpen}
-      triggerChildren={<IconDropdownMenuItem icon={QrCode} text='Address QR Code' />}
+      triggerChildren={<IconDropdownMenuItem icon={IconQrcode} text='Address QR Code' />}
       onDropdownSelect={onDropdownSelect}
       onDialogOpenChange={onDialogOpenChange}
     >

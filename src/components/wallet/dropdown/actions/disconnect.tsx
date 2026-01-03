@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { LogOut } from 'lucide-react';
+import { IconLogout } from '@tabler/icons-react';
 import { useDisconnect } from 'wagmi';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
@@ -19,7 +19,7 @@ export default function Disconnect() {
         disconnect();
       }}
     >
-      <IconItem icon={LogOut} text='Disconnect' />
+      <IconItem icon={IconLogout} text='Disconnect' />
     </DropdownMenuItem>
   );
 }
