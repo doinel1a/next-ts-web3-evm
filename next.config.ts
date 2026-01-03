@@ -7,14 +7,7 @@ import './src/env.js';
 import type { NextConfig } from 'next';
 
 const nextConfig = {
-  reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
-  webpack: (config: { externals: string[] }) => {
-    config.externals.push('pino-pretty', 'lokijs', 'encoding');
-    return config;
-  }
+  reactStrictMode: true
 } satisfies NextConfig;
 
 export default nextConfig;
