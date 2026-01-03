@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import type { TTablerIconName } from '@/components/tabler';
 
 import TablerIcon from '@/components/tabler';

@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { useDisconnect } from 'wagmi';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';

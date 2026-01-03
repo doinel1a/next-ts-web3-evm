@@ -2,8 +2,6 @@
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-import React from 'react';
-
 import type { ComponentProps } from 'react';
 
 import { Button } from '@heroui/button';

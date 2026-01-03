@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import type { Chain } from 'viem';
 
 import { DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';

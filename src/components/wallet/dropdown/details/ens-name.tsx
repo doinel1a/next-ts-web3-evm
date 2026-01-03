@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import type { Address } from 'viem';
 
 import { useEnsName } from 'wagmi';

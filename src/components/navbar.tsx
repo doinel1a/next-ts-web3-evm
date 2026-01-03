@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Skeleton } from '@heroui/skeleton';
 import dynamic from 'next/dynamic';
 
