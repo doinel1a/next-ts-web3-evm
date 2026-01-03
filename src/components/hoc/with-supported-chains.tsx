@@ -37,7 +37,7 @@ export default function WithSupportedChains({ children }: Readonly<TWithSupporte
     <>
       <Dialog open={!isConnectedToSupportedChain} onOpenChange={onDialogOpenChange}>
         <DialogPortal>
-          <DialogContent hideCloseButton>
+          <DialogContent showCloseButton={false}>
             <SwitchChainDialogContent
               activeChainId={activeChainId}
               pendingChainId={variables?.chainId ?? 0}
