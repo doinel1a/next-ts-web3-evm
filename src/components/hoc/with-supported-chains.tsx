@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 import type { PropsWithChildren } from 'react';
 
@@ -12,8 +12,6 @@ import SwitchChainDialogContent from '../switch-chain/dialog-content';
 type TWithSupportedChains = PropsWithChildren;
 
 export default function WithSupportedChains({ children }: Readonly<TWithSupportedChains>) {
-  const [isSwitchChainDialogOpen, setIsSwitchChainDialogOpen] = useState(false);
-
   const {
     activeChainId,
     mainnetChains,
@@ -28,34 +26,18 @@ export default function WithSupportedChains({ children }: Readonly<TWithSupporte
 
   const onDialogOpenChange = useCallback(
     (open: boolean) => {
-      if (!isConnectedToSupportedChain) {
-        return;
+      if (!open && isConnectedToSupportedChain) {
+        reset();
       }
-
-      setIsSwitchChainDialogOpen(open);
     },
-    [isConnectedToSupportedChain, setIsSwitchChainDialogOpen]
+    [isConnectedToSupportedChain, reset]
   );
-
-  const onSwitchSuccessCallback = useCallback(() => {
-    reset();
-    onDialogOpenChange(false);
-    setIsSwitchChainDialogOpen(false);
-  }, [reset, onDialogOpenChange, setIsSwitchChainDialogOpen]);
-
-  useEffect(() => {
-    if (isConnectedToSupportedChain) {
-      onSwitchSuccessCallback();
-    } else {
-      setIsSwitchChainDialogOpen(true);
-    }
-  }, [isConnectedToSupportedChain, onSwitchSuccessCallback]);
 
   return (
     <>
-      <Dialog open={isSwitchChainDialogOpen} onOpenChange={onDialogOpenChange}>
+      <Dialog open={!isConnectedToSupportedChain} onOpenChange={onDialogOpenChange}>
         <DialogPortal>
-          <DialogContent hideCloseButton>
+          <DialogContent showCloseButton={false}>
             <SwitchChainDialogContent
               activeChainId={activeChainId}
               pendingChainId={variables?.chainId ?? 0}

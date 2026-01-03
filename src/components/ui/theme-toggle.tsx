@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@heroui/button';
-import { Laptop, MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import {
@@ -14,6 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+
+import TablerIcon from '../tabler';
 
 export default function ThemeToggle() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -30,8 +31,14 @@ export default function ThemeToggle() {
             setIsDropdownOpen((previousState) => !previousState);
           }}
         >
-          <Sun className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90' />
-          <MoonStar className='absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0' />
+          <TablerIcon
+            name='IconSun'
+            className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90'
+          />
+          <TablerIcon
+            name='IconMoonStars'
+            className='absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0'
+          />
           <span className='sr-only'>Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -44,7 +51,7 @@ export default function ThemeToggle() {
             setTheme('light');
           }}
         >
-          <Sun className='mr-2 h-[1.2rem] w-[1.2rem]' />
+          <TablerIcon name='IconSun' className='mr-2 h-[1.2rem] w-[1.2rem]' />
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -53,7 +60,7 @@ export default function ThemeToggle() {
             setTheme('dark');
           }}
         >
-          <MoonStar className='mr-2 h-[1.2rem] w-[1.2rem]' />
+          <TablerIcon name='IconMoonStars' className='mr-2 h-[1.2rem] w-[1.2rem]' />
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -62,7 +69,7 @@ export default function ThemeToggle() {
             setTheme('system');
           }}
         >
-          <Laptop className='mr-2 h-[1.2rem] w-[1.2rem]' />
+          <TablerIcon name='IconDeviceLaptop' className='mr-2 h-[1.2rem] w-[1.2rem]' />
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

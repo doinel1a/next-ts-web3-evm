@@ -1,8 +1,8 @@
-import React, { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { Button } from '@heroui/button';
 import dynamic from 'next/dynamic';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 
 import {
   DropdownMenu,
@@ -56,7 +56,7 @@ export default function WalletDropdown() {
   const dropdownTriggerReference = useRef<HTMLButtonElement | null>(null);
   const focusReference = useRef<HTMLButtonElement | null>(null);
 
-  const { address } = useAccount();
+  const { address } = useConnection();
   const displayAddress = useMemo(() => {
     const firtPart = address?.slice(0, 6);
     const lastPart = address?.slice(-6);
@@ -97,7 +97,7 @@ export default function WalletDropdown() {
           }
         }}
       >
-        <DropdownMenuLabel>Details</DropdownMenuLabel>
+        <DropdownMenuLabel>Wallet details</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <ENSName address={address} />

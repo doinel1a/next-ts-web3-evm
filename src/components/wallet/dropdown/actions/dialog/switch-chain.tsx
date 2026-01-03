@@ -2,8 +2,6 @@
 
 import React, { useCallback } from 'react';
 
-import { RefreshCcw } from 'lucide-react';
-
 import SwitchChainDialogContent from '@/components/switch-chain/dialog-content';
 import useSwitchChain from '@/hooks/use-switch-chain';
 
@@ -42,7 +40,7 @@ export default function SwitchChainDialog({
   return (
     <ForwardedDialog
       isDialogOpen={isDialogOpen}
-      triggerChildren={<IconDropdownMenuItem icon={RefreshCcw} text='Switch Chain' />}
+      triggerChildren={<IconDropdownMenuItem iconName='IconRefresh' text='Switch Chain' />}
       onDropdownSelect={onDropdownSelect}
       onDialogOpenChange={(open) => {
         onDialogOpenChange(open);

@@ -2,14 +2,12 @@
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-import React from 'react';
-
 import type { ComponentProps } from 'react';
 
 import { Button } from '@heroui/button';
 import { Skeleton } from '@heroui/skeleton';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 
 import { cn } from '@/lib/utils';
 
@@ -18,7 +16,7 @@ import WalletDropdown from './dropdown';
 type TWallet = ComponentProps<'button'>;
 
 export default function Wallet({ className }: TWallet) {
-  const { isConnected, isDisconnected } = useAccount();
+  const { isConnected, isDisconnected } = useConnection();
   const { openConnectModal } = useConnectModal();
 
   if (isConnected) {

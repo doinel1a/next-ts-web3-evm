@@ -2,8 +2,6 @@
 
 'use client';
 
-import React from 'react';
-
 import type { Chain } from 'viem';
 
 import { Button } from '@heroui/button';

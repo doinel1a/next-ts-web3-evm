@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { Address } from 'viem';
 
-import { QrCode } from 'lucide-react';
 import Image from 'next/image';
 import QRCode from 'qrcode';
 
@@ -30,19 +29,28 @@ export default function QRCodeDialog({
 
   useEffect(() => {
     if (!address) {
-      setBase64QRCode(null);
       return;
     }
 
+    let isMounted = true;
+
     QRCode.toDataURL(address)
       .then((imageBase64) => {
-        setBase64QRCode(imageBase64);
+        if (isMounted) {
+          setBase64QRCode(imageBase64);
+        }
         return null;
       })
       .catch((error) => {
         console.error('Error generating address QRCode', error);
-        setBase64QRCode(null);
+        if (isMounted) {
+          setBase64QRCode(null);
+        }
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [address]);
 
   if (!base64QRCode) {
@@ -52,7 +60,7 @@ export default function QRCodeDialog({
   return (
     <ForwardedDialog
       isDialogOpen={isDialogOpen}
-      triggerChildren={<IconDropdownMenuItem icon={QrCode} text='Address QR Code' />}
+      triggerChildren={<IconDropdownMenuItem iconName='IconQrcode' text='Address QR Code' />}
       onDropdownSelect={onDropdownSelect}
       onDialogOpenChange={onDialogOpenChange}
     >

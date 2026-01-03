@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { Coins } from 'lucide-react';
 import Link from 'next/link';
 import { useChainId, useChains } from 'wagmi';
 
@@ -29,7 +28,7 @@ export default function Faucet() {
   return (
     <DropdownMenuItem>
       <Link href={FAUCET_URL} target='_blank' className='cursor-default'>
-        <IconItem icon={Coins} text='Faucet' />
+        <IconItem iconName='IconCoins' text='Faucet' />
       </Link>
     </DropdownMenuItem>
   );

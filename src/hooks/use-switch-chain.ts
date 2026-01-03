@@ -1,13 +1,14 @@
 import { useCallback, useMemo } from 'react';
 
 import { toast } from 'sonner';
-import { useAccount, useSwitchChain as useWagmiSwitchChain } from 'wagmi';
+import { useChains, useConnection, useSwitchChain as useWagmiSwitchChain } from 'wagmi';
 
 export default function useSwitchChain(onSuccessCallback?: () => void) {
-  const { chainId: activeChainId } = useAccount();
-  const { chains, variables, isError, isSuccess, reset, switchChainAsync } = useWagmiSwitchChain();
-  const mainnetChains = useMemo(() => chains.filter((chain) => !!!chain.testnet), [chains]);
-  const testnetChains = useMemo(() => chains.filter((chain) => !!chain.testnet), [chains]);
+  const { chainId: activeChainId } = useConnection();
+  const chains = useChains();
+  const { variables, isError, isSuccess, reset, mutateAsync } = useWagmiSwitchChain();
+  const mainnetChains = useMemo(() => chains.filter((chain) => !chain.testnet), [chains]);
+  const testnetChains = useMemo(() => chains.filter((chain) => chain.testnet), [chains]);
 
   const activeChain = useMemo(
     () => chains.find((chain) => chain.id === activeChainId),
@@ -15,7 +16,7 @@ export default function useSwitchChain(onSuccessCallback?: () => void) {
   );
 
   const isConnectedToSupportedChain = useMemo(
-    () => (activeChainId ? !!chains.some((chain) => chain.id === activeChainId) : true),
+    () => (activeChainId ? chains.some((chain) => chain.id === activeChainId) : true),
     [activeChainId, chains]
   );
 
@@ -26,7 +27,7 @@ export default function useSwitchChain(onSuccessCallback?: () => void) {
       }
 
       try {
-        await switchChainAsync({ chainId });
+        await mutateAsync({ chainId });
 
         const activeChain = chains.find((chain) => chain.id === chainId);
         toast.success('Success', {
@@ -69,7 +70,7 @@ export default function useSwitchChain(onSuccessCallback?: () => void) {
         console.error('Error switching chain', error);
       }
     },
-    [activeChainId, chains, onSuccessCallback, switchChainAsync]
+    [activeChainId, chains, onSuccessCallback, mutateAsync]
   );
 
   return {

@@ -4,6 +4,7 @@ onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - bufferutil
   - keccak
+  - msw
   - sharp
   - unrs-resolver
   - utf-8-validate
